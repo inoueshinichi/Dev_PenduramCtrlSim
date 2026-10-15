@@ -279,8 +279,8 @@ ml\ddot{x} + B\ddot{\theta} - mgl\theta &= -u
 ```math
 \begin{aligned}
 \ddot{x} &= -\frac{m^2gl^2}{D(\theta)}\theta + \frac{\frac{B}{r} + ml}{D(\theta)}u \\
-\ddot{\theta} &= \frac{Amgl}{D(\theta)}\theta - \frac{A + \frac{ml}{r}}{D(\theta)} 
-\end{aligned}u
+\ddot{\theta} &= \frac{Amgl}{D(\theta)}\theta - \frac{A + \frac{ml}{r}}{D(\theta)}u 
+\end{aligned}
 ```
 
 # 制御モデル
@@ -317,7 +317,7 @@ B_s =
 ```
 
 ```math
-\dot{\bold{x}} = A_s\bold{x} + B_su
+\dot{\mathbf{x}} = A_s\mathbf{x} + B_su
 ```
 
 ## 伝達関数の導出
