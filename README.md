@@ -96,12 +96,12 @@ Q_\theta = -\tau
 - 回転運動エネルギー $T_{rot} = \frac{1}{2}I\omega^2$
 
 車体の重心座標 $(x_G, y_G)$
-- $ x_G = x + lsin\theta $
-- $ y_G = lcos\theta $
+- $x_G = x + lsin\theta$
+- $y_G = lcos\theta$
 
 重心速度 $(\dot{x_G}, \dot{y_G})$
-- $ \dot{x_G} = \dot{x} + lcos\theta \dot{\theta} $
-- $ \dot{y_G} = -lsin\theta \dot{\theta} $
+- $\dot{x_G} = \dot{x} + lcos\theta \dot{\theta}$
+- $\dot{y_G} = -lsin\theta \dot{\theta}$
 
 車体の並進運動エネルギー $T_{body,trans}$
 ```math
@@ -149,15 +149,15 @@ V = mgy_G
 \delta W = \tau(\delta \phi - \delta \theta)
 ```
 
-- 転がり条件 $ \delta \phi = \frac{\delta x}{r} $ を使うと
+- 転がり条件 $\delta \phi = \frac{\delta x}{r}$ を使うと
 
 ##### 車軸の並進方向に関する仮想仕事
 ```math
 \delta W = \frac{\tau}{r} \delta x - \tau \delta \theta
 ```
 
-- 車軸の位置 $x$ 方向に関する一般化力: $ Q_x = \frac{\tau}{r} $
-- 車体の回転 $\theta$ 方向に関する一般化力: $ Q_\theta = -\tau $
+- 車軸の位置 $x$ 方向に関する一般化力: $Q_x = \frac{\tau}{r}$
+- 車体の回転 $\theta$ 方向に関する一般化力: $Q_\theta = -\tau$
 
 
 #### 一般化座標`x`に対してのラグランジュ方程式
