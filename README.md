@@ -18,31 +18,31 @@
 ## 物理パラメータ
 
 
-| 場所  | 記号  | 意味                          |
-| --- | --- | --------------------------- |
-| 車体  | `m` | 車体の重量                       |
-|     | `J` | 車体の慣性モーメント                  |
-|     | `l` | 車輪から車体の重心までの距離 (車体の長さは`2l`) |
-| 車輪  | `M` | 車輪の重量                       |
-|     | `I` | 車輪の回転慣性                     |
-|     | `r` | 車輪の半径                       |
-| 共通  | `g` | 重力加速度                       |
+| 場所  | 記号  | 単位 | 意味 |
+| ---   | ---  | ---  | --- |
+| 車体  | `m` | [kg] | 車体の重量 |
+|      | `J` | [kgm^2] | 車体の慣性モーメント |
+|      | `l` | [m] | 車輪から車体の重心までの距離 (車体の長さは`2l`) |
+| 車輪  | `M` | [kg] | 車輪の重量 |
+|      | `I` | [kgm^2] | 車輪の回転慣性 |
+|      | `r` | [m] | 車輪の半径 |
+| 共通  | `g` | [m/s^2] | 重力加速度 |
 
 
 ## 制御パラメータ
 
 
-| 記号  | 意味                      |
-| --- | ----------------------- |
-| `x` | 車輪の水平位置                 |
-| `θ` | 車体の鉛直方向からの傾き(x軸正方向を`+`) |
+| 記号  | 単位 | 意味 |
+| --- | ---   | --- |
+| `x` | [kg]  | 車輪の水平位置 |
+| `θ` | [rad] | 車体の鉛直方向からの傾き(x軸正方向を`+`) |
 
 
 
 
 ## 制御入力
 
-- `u` モータの駆動トルク
+- `u` モータの駆動トルク [Nm]
 
 ## 前提条件
 - 【車輪と地面】との摩擦力は無視
@@ -50,7 +50,9 @@
 - 【車輪】のモータは左右1個ずつ合計2個使うが、特性は揃っているとする
 
 - 【拘束条件】 車輪と床は滑らない
-$$ x = \phi r $$
+```math
+x = \phi r
+```
 
 
 
@@ -72,9 +74,15 @@ $$ x = \phi r $$
 
 今回選択する一般化座標
 
-$$ q = [x, θ] $$
-$$ Q_x = \frac{\tau}{r} $$
-$$ Q_\theta = -\tau $$
+```math
+q = [x, θ]
+```
+```math
+Q_x = \frac{\tau}{r}
+```
+```math
+Q_\theta = -\tau
+```
 
 
 ラグラジアン $L = T - V$
@@ -96,16 +104,24 @@ $$ Q_\theta = -\tau $$
 - $ \dot{y_G} = -lsin\theta \dot{\theta} $
 
 車体の並進運動エネルギー $T_{body,trans}$
-$$ T_{body,trans} = \frac{1}{2}m(\dot{x}^2 + 2lcos\theta \dot{x} \dot{\theta} + l^2 + \dot{\theta}^2) $$
+```math
+T_{body,trans} = \frac{1}{2}m(\dot{x}^2 + 2lcos\theta \dot{x} \dot{\theta} + l^2 + \dot{\theta}^2)
+```
 
 車体の回転運動エネルギー $T_{body,rot}$
-$$ T_{body,rot} = \frac{1}{2} I \dot{\theta}^2 $$
+```math
+T_{body,rot} = \frac{1}{2} I \dot{\theta}^2
+```
 
 車輪の並進運動エネルギー $T_{wheel,trans}$
-$$ T_{wheel,trans} = \frac{1}{2}M\dot{x}^2 $$
+```math
+T_{wheel,trans} = \frac{1}{2}M\dot{x}^2
+```
 
 車輪の回転運動エネルギー $T_{wheel,rot}$
-$$ T_{wheel,rot} = \frac{1}{2}J(\frac{\dot{x}}{r})^2 $$
+```math
+T_{wheel,rot} = \frac{1}{2}J(\frac{\dot{x}}{r})^2
+```
 
 ##### 運動エネルギー T
 ```math 
@@ -117,7 +133,9 @@ T &= T_{body,trans} + T_{body,rot} + T_{wheel,trans} + T_{wheel,rot} \\
 
 #### 位置エネルギー V
 - 重力による位置エネルギーは車軸の位置を基準にすることで
-$$ V = mgy_G $$
+```math
+V = mgy_G
+```
 
 #### 一般化力 $Q_x, Q_\theta$ の定義
 - 一般化力は, 仮想仕事を一般化座標の微小変位で表したときの係数.
@@ -127,7 +145,9 @@ $$ V = mgy_G $$
 
 
 ##### 車体の回転方向に関する仮想仕事 
-$$ \delta W = \tau(\delta \phi - \delta \theta) $$
+```math
+\delta W = \tau(\delta \phi - \delta \theta)
+```
 
 - 転がり条件 $ \delta \phi = \frac{\delta x}{r} $ を使うと
 
@@ -187,8 +207,12 @@ mlcos\theta\ddot{x} + (I + ml^2)\ddot{\theta} - mglsin\theta = -\tau
 
 # 運動方程式
 略記
-$$ A = M + m + \frac{J}{r^2} $$
-$$ B = I + ml^2 $$
+```math
+A = M + m + \frac{J}{r^2}
+```
+```math
+B = I + ml^2
+```
 
 車輪の位置に関する運動方程式
 ```math
@@ -308,8 +332,12 @@ ml\ddot{x} + B\ddot{\theta} - mgl\theta &= -u
 ```
 
 ラプラス変換
-$$ As^2X(s) + mls^2\Theta(s) = \frac{U(s)}{r} $$
-$$ mls^2X(s) + (Bs^2 - mgl)\Theta(s) = - U(s) $$
+```math
+As^2X(s) + mls^2\Theta(s) = \frac{U(s)}{r}
+```
+```math
+mls^2X(s) + (Bs^2 - mgl)\Theta(s) = - U(s)
+```
 
 連立方程式を解くと...
 
